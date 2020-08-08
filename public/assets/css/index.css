@@ -1,0 +1,65 @@
+.set-bg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+	background-image: url('../img/bg.jpg');
+}
+.hero-section {
+	height: 100vh;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	font-weight: 600;
+	color: #474747;
+}
+p {
+	font-size: 14.1px;
+	color: #878787;
+	line-height: 2.2;
+	font-weight: 500;
+}
+h1 {
+	font-size: 70px;
+}
+
+h2 {
+	font-size: 36px;
+}
+
+h3 {
+	font-size: 30px;
+}
+
+h4 {
+	font-size: 24px;
+}
+
+h5 {
+	font-size: 20px;
+}
+
+h6 {
+	font-size: 16px;
+}
+.hero-text {
+	text-align: center;
+	padding-top: 45vh;
+	margin-bottom: 105px;
+}
+.text-white h1,
+.text-white h2,
+.text-white h3,
+.text-white h4,
+.text-white h5,
+.text-white h6,
+.text-white p,
+.text-white span,
+.text-white li,
+.text-white a {
+	color: #fff;
+}
