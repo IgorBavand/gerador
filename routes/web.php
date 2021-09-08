@@ -27,7 +27,7 @@ Route::get('/home', 'AuthController@painel')->name('home');
 Route::get('/home/Formlogin', 'AuthController@Formlogin')->name('admin.Formlogin');
 Route::post('/home/logout', 'AuthController@sair')->name('admin.logout');
 Route::post('/admin/login/do', 'AuthController@login')->name('admin.login.do');
-Route::post('/gerar', 'HomeController@index')->name('gerar');
+Route::post('/gerar', 'HomeController@gerarAvaliacao')->name('gerar');
 
 
 

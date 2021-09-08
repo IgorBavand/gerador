@@ -59,8 +59,6 @@ class SysController extends Controller
     public function store(Request $request)
     {
 
-      //  $cb1 = string($request->alt1);
-
         
        if($request->check == '1'){
            $ck1 = 'c';

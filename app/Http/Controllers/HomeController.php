@@ -31,7 +31,7 @@ class HomeController extends Controller
         $this->objQuestao = new ModelQuestao();
         $this->objAlternativas = new ModelAlternativas();
     }
-    public function index(Request $request)
+    public function gerarAvaliacao(Request $request)
     {
         $assunto = $request->assunto;
         $professor = $request->professor;
@@ -41,10 +41,19 @@ class HomeController extends Controller
         if($this->objQuestao->where('assunto', $assunto)->count() >= $qtd){
             $questoes = $this->objQuestao->where('assunto', $assunto)->get()->random($qtd)->shuffle();
             $alternativas = $this->objQuestao;
-            $pdf = PDF::loadView('gerador/prova', compact('assunto', 'inst', 'professor', 'questoes', 'alternativas'));
-        $new =  $pdf->setPaper('a4')->stream('avaliacao.pdf');
-        return $new;
-        }else{
+         //   $pdf = PDF::loadView('gerador/prova', compact('assunto', 'inst', 'professor', 'questoes', 'alternativas'));
+        //$new =  $pdf->setPaper('a4')->stream('avaliacao.pdf');
+
+        
+        //passando valores para sessoes e para recuperá-los depois
+        session()->put('assunto', $assunto);
+        session()->put('professor', $professor);
+        session()->put('inst', $inst);    
+
+        return view('admin.painelOpcoes');
+       
+    
+    }else{
             $erro_qtd = true;
             return redirect()->back()->withInput()->withErrors(['Não há questões suficientes no banco.']);
         }
