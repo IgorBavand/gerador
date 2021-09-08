@@ -53,65 +53,64 @@ a{
         
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
-      <h3 class="display-4 fst-italic">Valeu por usar o GERPRO!</h3>
+      <h2 class="font-italic">Valeu por usar o GERPRO! <i class="fa fa-thumbs-up" aria-hidden="true"></i></h2>
     </div>
 
     <div class="row">
             
 			 
-			    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                
-					<div class="box-part text-center">
-                        
-                        <i class="fa fa-file fa-3x" aria-hidden="true"></i>
-                        
-						<div class="title">
-							<h4>Baixar Avaliação</h4>
-						</div>
-                        
-						<div class="text text-black">
-							<span>Clique no botão abaixo para baixar a avaliação.</span>
-						</div>
-                        
-						<a href="#" class="btn btn-primary">Download</a>
-                        
-					 </div>
-				</div>	 
+               <div class="box-part text-center">
+                   
+                   <i class="fa fa-file fa-3x" aria-hidden="true"></i>
+                   
+                   <div class="title">
+                       <h4 class="text-primary">Baixar Avaliação</h4>
+                   </div>
+                   
+                   <div class="text">
+                       <span class="text-primary">Clique no botão abaixo para baixar a avaliação.</span>
+                   </div>
+                   
+                   <a href="{{url('download_prova')}}" class="btn btn-primary">Download</a>
+                   
+                </div>
+           </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+               
+               <div class="box-part text-center">
+                   
+                   <i class="fa fa-file-text fa-3x" aria-hidden="true"></i>
+                   
+                   <div class="title">
+                       <h4 class="text-primary">Baixar Gabarito</h4>
+                   </div>
+                   
+                   <div class="text">
+                       <span class="text-primary">Clique no botão abaixo para baixar o gabarito da avaliação.</span>
+                   </div>
+                   
+                   <a href="{{url('download_gabarito')}}" class="btn btn-primary">Download</a>
+                   
+                </div>
+           </div>	 	 
 				
 				 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                
 					<div class="box-part text-center">
-					    
-					    <i class="fa fa-file-text fa-3x" aria-hidden="true"></i>
-                    
+                        
+                        <i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+                        
 						<div class="title">
-							<h4>Baixar Gabarito</h4>
+							<h4 class="text-primary">Nova Avaliação</h4>
 						</div>
                         
 						<div class="text">
-							<span>CLique no botão abaixo para baixar o gabarito da avalição.</span>
+							<span class="text-primary">Clique no botão abaixo para baixar a avaliação.</span>
 						</div>
                         
-						<a href="#" class="btn btn-primary">Download</a>
-                        
-					 </div>
-				</div>	 
-				
-				 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-					<div class="box-part text-center">
-                        
-                        <i class="fa fa-plus     fa-3x" aria-hidden="true"></i>
-                        
-						<div class="title">
-							<h4 class="">Facebook</h4>
-						</div>
-                        
-						<div class="text">
-							<span>Clique no botão abaixo para baixar a avaliação.</span>
-						</div>
-                        
-						<a href="#" class="btn btn-primary">Ir para apágina</a>
+						<a href="{{url('/')}}" class="btn btn-primary">Ir para apágina</a>
                         
 					 </div>
 				</div>	 

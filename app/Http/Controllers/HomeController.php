@@ -46,6 +46,8 @@ class HomeController extends Controller
 
         
         //passando valores para sessoes e para recuperá-los depois
+        session()->put('questoes', $questoes);
+        session()->put('alternativas', $alternativas);
         session()->put('assunto', $assunto);
         session()->put('professor', $professor);
         session()->put('inst', $inst);    
@@ -57,10 +59,46 @@ class HomeController extends Controller
             $erro_qtd = true;
             return redirect()->back()->withInput()->withErrors(['Não há questões suficientes no banco.']);
         }
-
         
-  
+    }
 
-        
+    public function download_gabarito(){
+
+        $assunto = session()->get('assunto');
+        $inst = session()->get('inst');
+        $alternativas = session()->get('alternativas');
+        $questoes = session()->get('questoes');
+        $professor = session()->get('professor');
+       
+       /* session()->flush('assunto');
+        session()->flush('inst');
+        session()->flush('questoes');
+        session()->flush('alternativas');
+        session()->flush('professor');
+        */
+        $pdf = PDF::loadView('gerador/gabarito', compact('assunto', 'inst', 'professor', 'questoes', 'alternativas'));
+        $new =  $pdf->setPaper('a4')->download('gabarito.pdf');
+        return $new;
+
+    }
+
+    public function download_prova(){
+
+        $assunto = session()->get('assunto');
+        $inst = session()->get('inst');
+        $alternativas = session()->get('alternativas');
+        $questoes = session()->get('questoes');
+        $professor = session()->get('professor');
+       
+       /* session()->flush('assunto');
+        session()->flush('inst');
+        session()->flush('questoes');
+        session()->flush('alternativas');
+        session()->flush('professor');
+        */
+        $pdf = PDF::loadView('gerador/prova', compact('assunto', 'inst', 'professor', 'questoes', 'alternativas'));
+        $new =  $pdf->setPaper('a4')->download('prova.pdf');
+        return $new;
+
     }
 }

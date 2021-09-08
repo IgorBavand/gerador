@@ -28,6 +28,8 @@ Route::get('/home/Formlogin', 'AuthController@Formlogin')->name('admin.Formlogin
 Route::post('/home/logout', 'AuthController@sair')->name('admin.logout');
 Route::post('/admin/login/do', 'AuthController@login')->name('admin.login.do');
 Route::post('/gerar', 'HomeController@gerarAvaliacao')->name('gerar');
+Route::get('/download_gabarito', 'HomeController@download_gabarito')->name('download_gabarito');
+Route::get('/download_prova', 'HomeController@download_prova')->name('download_prova');
 
 
 

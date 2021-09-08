@@ -118,31 +118,33 @@ use App\Models\ModelAlternativas;
                 <p class="letras-quest">@php $num_questao++; echo $num_questao . " )"; @endphp {{$questao->texto}}</p>
                @php $veri_alt = 0; @endphp
                 @foreach($select_de_alt as $sel)
-                    
-                @php  
+                    @php  
                         
                    
-                        $veri_alt++;
-                            switch($veri_alt){
-                                case 1: 
-                                    $letra = 'A )';
-                                break;
-                                case 2:
-                                    $letra = 'B )';
-                                break;
-                                case 3:
-                                    $letra = 'C )';
-                                break;
-                                case 4:
-                                    $letra = 'D )';
-                                break;
-                            }
-                            
-                            
-                       @endphp 
-
+                    $veri_alt++;
+                        switch($veri_alt){
+                            case 1: 
+                                $letra = 'A )';
+                            break;
+                            case 2:
+                                $letra = 'B )';
+                            break;
+                            case 3:
+                                $letra = 'C )';
+                            break;
+                            case 4:
+                                $letra = 'D )';
+                            break;
+                        }
+                        
+                        
+                   @endphp 
+                   @if($sel->check === 'c')
+                   <p style="color:green; font-weight: bold;" class="letras-quest"> @php echo $letra @endphp {{$sel->alternativa}}</p>
+                   @else
                    <p class="letras-quest"> @php echo $letra @endphp {{$sel->alternativa}}</p>
-                         
+                   @endif
+                   
                    
                    
                 @endforeach
