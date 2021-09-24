@@ -47,12 +47,6 @@
 
         <div id="div-alternativas">
 
-
-
-
-
-
-
             <div class="form-group">
                 <label for="alt1" class="col-form-label">Alternativa 01:</label>
 

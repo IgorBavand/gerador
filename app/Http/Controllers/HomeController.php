@@ -47,9 +47,9 @@ class HomeController extends Controller
 
         try{
             $assunto = $request->assunto;
-        $professor = $request->professor;
-        $qtd = $request->qtd_questoes;
-        $inst = $request->instituicao;
+            $professor = $request->professor;
+            $qtd = $request->qtd_questoes;
+            $inst = $request->instituicao;
 
         if ($this->objQuestao->where('assunto', $assunto)->count() >= $qtd) {
             $questoes = $this->objQuestao->where('assunto', $assunto)->get()->random($qtd)->shuffle();

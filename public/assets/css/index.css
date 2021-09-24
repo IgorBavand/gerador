@@ -1,15 +1,18 @@
-.set-icone-home {
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+}
 
+.set-icone-home {
+	margin-top: 5%;
 	display: flex;
     align-items: center; 
     justify-content: center; 
 
 }
 
-.puxar-pra-cima{
-	margin: 0;
-	padding: 0;
-}
+
 
 
 .center{
@@ -56,6 +59,19 @@ input:checked[type="checkbox"]:before{
 	height: 30%;
 	width: 30%;
 }
+
+@media (max-width: 750px)
+{
+  .icone-home {
+	  width: 70%;
+	  height: auto;
+
+	}
+
+	.letra-home{
+		font-size: 25px;
+	}
+}
 .hero-section {
 	height: 100vh;
 }
@@ -100,8 +116,6 @@ h6 {
 }
 .hero-text {
 	text-align: center;
-	padding-top: 45vh;
-	margin-bottom: 105px;
 }
 .text-white h1,
 .text-white h2,
