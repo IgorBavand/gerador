@@ -11,5 +11,9 @@ class ModelQuestao extends Model
 
     public function relAlt(){
         return $this->hasMany('App\Models\ModelAlternativas', 'id_questao');
+    } 
+
+    public function relSub(){
+        return $this->hasOne('App\Models\ModelSubjetiva', 'id_questao');
     }
 }

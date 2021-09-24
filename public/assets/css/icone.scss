@@ -1,0 +1,17 @@
+
+.comp{
+    transform: translatey(0px);
+    animation: balanca 4s ease-in-out infinite;
+    width: 20%;
+    height: 30%;
+}
+
+@keyframes balanca {
+    0%{
+        transform: translatey(0px);
+    }50%{
+        transform: translatey(-30px);
+    }100%{
+        transform: translatey(0px);
+    }
+}

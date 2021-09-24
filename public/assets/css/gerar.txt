@@ -1,7 +1,5 @@
-lista de requisitos para gerar avaliação:
+cores:
 
--Nome da instituição
--Nome do professor 
--Disciplina
--assunto
--quantidade de questões
+#37363D - fundo 
+
+#6C7A86 - card login

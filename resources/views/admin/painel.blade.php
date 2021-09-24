@@ -2,21 +2,28 @@
 
 @section('content')
 
-<section class="hero-section set-bg" style="mt-0">
+<section class="hero-section" style="mt-0">
+
+
+
 
 @if($errors->all())
                     @foreach($errors->all() as $error)
                         <div class="alert alert-warning">{{$error}}</div>
                     @endforeach
                 @endif
-            <div class="hero-text text-white">
+            <div class="hero-text text-white div-pai border">
+   
                 <div class="container">
+                <div class="set-icone-home border">
+    <img class="icone-home" src="https://image.freepik.com/free-photo/laptop-computer-book-workplace-library-room_1150-5925.jpg" alt="">
+</div>
                     <h2>Bem-Vindo ao gerador de avaliações</h2>
                     <p>Sistema desenvolvido para auxiliar no ensino, gerando avaliações instantaneas</p>
                 </div>
 
                 <a data-target="#gerar_prova" data-toggle="modal" class="btn btn-primary" >Gerar Avaliação</a>
-                <a data-target="#cad_questao" data-toggle="modal" class="btn btn-primary" >Cadastrar Questões</a>
+                <a href="formCadastrarQuestao" class="btn btn-primary" >Cadastrar Questões</a>
                 <!--
                 <a class="btn btn-warning" style="color: black;">Minhas Questões</a>
                 -->

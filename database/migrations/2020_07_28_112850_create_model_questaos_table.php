@@ -18,13 +18,15 @@ class CreateModelQuestaosTable extends Migration
             
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+             
+            
             /*
             aqui deu erro n consegui resolver
             $table->string('id_assunto')->unsigned();
             $table->foreign('id_assunto')->references('assunto')->on('assunto')->onDelete('cascade')->onUpdate('cascade');
             */
             $table->string('assunto');
-            $table->string('texto');   
+            $table->text('texto');   
             $table->timestamps();
         });
     }

@@ -30,6 +30,7 @@ Route::post('/admin/login/do', 'AuthController@login')->name('admin.login.do');
 Route::post('/gerar', 'HomeController@gerarAvaliacao')->name('gerar');
 Route::get('/download_gabarito', 'HomeController@download_gabarito')->name('download_gabarito');
 Route::get('/download_prova', 'HomeController@download_prova')->name('download_prova');
+Route::get('formCadastrarQuestao', 'HomeController@formCadastroQuestao')->name('cadastrar_questao');
 
 
 

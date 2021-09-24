@@ -7,11 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'GERPRO') }}</title>
+    <title>GERPRO</title>
 
-    <!-- Scripts -->
+    <!-- Scripts 
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+-->
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -19,12 +19,31 @@
         <link rel="stylesheet" href="{{url('assets/css/font-awesome.min.css')}}"/>
         <link rel="stylesheet" href="{{url('assets/css/index.css')}}"/>
 
-    <!-- Styles -->
+    <!-- Styles 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+-->
+    <link rel="stylesheet" href="{{url('assets/css/icone.css')}}"/>
+
+    <style>
+         body{
+            background-color: #37363D;
+         }
+         .color-nav{
+             background-color: black;
+         }
+    </style>
+
+      <!--====== Javascripts & Jquery ======-->
+   <script src="{{url('assets/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{url('assets/js/mixitup.min.js')}}"></script>
+    <script src="{{url('assets/js/circle-progress.min.js')}}"></script>
+    <script src="{{url('assets/js/owl.carousel.min.js')}}"></script>
+    
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ">
+        <nav class="navbar navbar-expand-md navbar-dark color-nav shadow-sm">
             <div class="container ">
                 <a class="navbar-brand" href="{{ url('/') }}">
                      Gerador de avaliações
@@ -77,27 +96,16 @@
                 </div>
             </div>
         </nav>
-        <style>
-    .set-fundo {
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: top center;
-    background-image: url("{{url('assets/img/fundo.jpg')}}");
-    
-}
-</style>
+       
 
-        <main class="py-4 set-fundo" style="height: 100vh">
+        <main class="py-4" style="height: 100vh">
             @yield('content')
         </main>
     </div>
 </body>
 
-   <!--====== Javascripts & Jquery ======-->
-   <script src="{{url('assets/js/jquery-3.2.1.min.js')}}"></script>
-    <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{url('assets/js/mixitup.min.js')}}"></script>
-    <script src="{{url('assets/js/circle-progress.min.js')}}"></script>
-    <script src="{{url('assets/js/owl.carousel.min.js')}}"></script>
+ 
+    <!--
     <script src="{{url('asstes/js/main.js')}}"></script>
-</html>
+        -->
+    </html>

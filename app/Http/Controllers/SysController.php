@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ModelQuestao;
 use App\Models\ModelAlternativas;
+use App\Models\ModelSubjetiva;
 use Illuminate\Support\Facades\Auth;
 class SysController extends Controller
 {
@@ -16,6 +17,7 @@ class SysController extends Controller
     public function __construct(){
         $this->objQuestao = new ModelQuestao();
         $this->objAlternativas = new ModelAlternativas();
+        $this->objSubjetiva = new ModelSubjetiva();
     }
 
     /**
@@ -59,29 +61,6 @@ class SysController extends Controller
     public function store(Request $request)
     {
 
-        
-       if($request->check == '1'){
-           $ck1 = 'c';
-       }else{
-        $ck1 = 'e';
-       } 
-
-       if($request->check == '2'){
-            $ck2 = 'c';
-        }else{
-            $ck2 = 'e';
-        }  
-        if($request->check == '3'){
-            $ck3 = 'c';
-        }else{
-         $ck3 = 'e';
-        }  
-        if($request->check == '4'){
-            $ck4 = 'c';
-        }else{
-         $ck4 = 'e';
-        }  
-            
         $questoes = $this->objQuestao->create([
             'id_user'=>1,
             'assunto'=>$request->assunto,
@@ -91,37 +70,70 @@ class SysController extends Controller
 
       $lastId = $questoes->id;
 
+        if((isset($request->alt1)) && (isset($request->alt2)) && (isset($request->alt3)) && (isset($request->alt4))){
+            if($request->check == '1'){
+                $ck1 = 'c';
+            }else{
+             $ck1 = 'e';
+            } 
+     
+            if($request->check == '2'){
+                 $ck2 = 'c';
+             }else{
+                 $ck2 = 'e';
+             }  
+             if($request->check == '3'){
+                 $ck3 = 'c';
+             }else{
+              $ck3 = 'e';
+             }  
+             if($request->check == '4'){
+                 $ck4 = 'c';
+             }else{
+              $ck4 = 'e';
+             }  
+             
+             $this->objAlternativas->create([
+                 'id_questao'=>$lastId,
+                 'alternativa'=>$request->alt1,
+                 'check'=>$ck1,
+                  
+             ]);
+     
+             $this->objAlternativas->create([
+                 'id_questao'=>$lastId,
+                 'alternativa'=>$request->alt2,
+                 'check'=>$ck2,
+                  
+             ]);
+     
+             $this->objAlternativas->create([
+                 'id_questao'=>$lastId,
+                 'alternativa'=>$request->alt3,
+                 'check'=>$ck3,
+                  
+             ]);
+     
+             $this->objAlternativas->create([
+                 'id_questao'=>$lastId,
+                 'alternativa'=>$request->alt4,
+                 'check'=>$ck4,
+                  
+             ]);
+        }else{
+            $this->objSubjetiva->create([
+                'id_questao' => $lastId,
+                'resposta' => $request->subjetiva
+            ]);
+        }
+
         
-        $this->objAlternativas->create([
-            'id_questao'=>$lastId,
-            'alternativa'=>$request->alt1,
-            'check'=>$ck1,
-             
-        ]);
-
-        $this->objAlternativas->create([
-            'id_questao'=>$lastId,
-            'alternativa'=>$request->alt2,
-            'check'=>$ck2,
-             
-        ]);
-
-        $this->objAlternativas->create([
-            'id_questao'=>$lastId,
-            'alternativa'=>$request->alt3,
-            'check'=>$ck3,
-             
-        ]);
-
-        $this->objAlternativas->create([
-            'id_questao'=>$lastId,
-            'alternativa'=>$request->alt4,
-            'check'=>$ck4,
-             
-        ]);
+      
         return redirect('/');
-        
+
     }
+        
+    
 
     /**
      * Display the specified resource.

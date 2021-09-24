@@ -25,9 +25,14 @@
 
 @section('content')
 
-<section class="hero-section set-bg">
+<section class="set-icone-home">
+
+            <div class="set-icone-home">
+                <h1>teste</h1>
+            </div>
+    
             <div class="hero-text text-white">
-                <div class="container">
+                <div class="container border">
                     <h2>Bem-Vindo ao gerador de avaliações</h2>
                     <p>Sistema desenvolvido para auxiliar no ensino, gerando avaliações instantaneas</p>
                 </div>

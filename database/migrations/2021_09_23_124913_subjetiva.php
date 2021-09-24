@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModelAltenativasTable extends Migration
+class Subjetiva extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateModelAltenativasTable extends Migration
      */
     public function up()
     {
-        Schema::create('alternativa', function (Blueprint $table) {
+
+        Schema::create('subjetiva', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_questao')->unsigned();
             $table->foreign('id_questao')->references('id')->on('questao')->onDelete('cascade')->onUpdate('cascade');
-            $table->text('alternativa');  
-            $table->string('check');  
+
+            $table->text('resposta');  
             $table->timestamps();
         });
+       
     }
+
 
     /**
      * Reverse the migrations.
@@ -30,6 +33,7 @@ class CreateModelAltenativasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('altenativa');
+        Schema::dropIfExists('subjetiva');
+
     }
 }
