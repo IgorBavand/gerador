@@ -80,6 +80,7 @@
     use App\Models\ModelQuestao;
     use App\Models\ModelAlternativas;
     use App\Models\ModelSubjetiva;
+
     @endphp
 
     <div class="cont-tit ">
@@ -115,7 +116,7 @@
         @foreach($questoes as $questao)
         @php
         $select_de_alt = $alternativas->find($questao->id)->relAlt->shuffle();
-        $resposta = $subjetivas->find($questao->id)->relSub->shuffle();
+        $resposta = $subjetivas->where('id_questao', $questao->id)->get();
         @endphp
         <p class="letras-quest">@php $num_questao++; echo $num_questao . " )"; @endphp {{$questao->texto}}</p>
         @php $veri_alt = 0; @endphp
@@ -154,11 +155,14 @@
 
         @endforeach
 
-        @php
 
-        var_dump($resposta);
+        @foreach($resposta as $res)
 
-        @endphp
+        <p style="color:green; font-weight: bold;" class="letras-quest">{{ $res->resposta }}</p>
+
+        @endforeach
+
+
 
         @endforeach
 
