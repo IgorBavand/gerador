@@ -39,13 +39,24 @@ class HomeController extends Controller
 
     public function formCadastroQuestao(){
 
-        $assunto = ModelAssunto::all();
-        return view('admin.formCadastroQuestao', compact('assunto'));
-    }
-    public function gerarAvaliacao(Request $request)
-    {
+        if(Auth::check() === true){
+            $assunto = ModelAssunto::all();
+            return view('admin.formCadastroQuestao', compact('assunto'));
+        }
 
-        try{
+        return redirect('/');
+
+        
+    }
+
+
+
+    public function rotaGerarPost(Request $request){
+
+    
+
+        if(Auth::check() === true){
+try{
             $assunto = $request->assunto;
             $professor = $request->professor;
             $qtd = $request->qtd_questoes;
@@ -53,10 +64,13 @@ class HomeController extends Controller
 
         if ($this->objQuestao->where('assunto', $assunto)->count() >= $qtd) {
             $questoes = $this->objQuestao->where('assunto', $assunto)->get()->random($qtd)->shuffle();
+            
+            
+            //$questoes = $this->objQuestao->where('assunto', $assunto)->get()->inRandomOrder()->shuffle();
+
             $alternativas = $this->objQuestao;
             $subjetivas = $this->objSubjetiva;
-            //$pdf = PDF::loadView('gerador/prova', compact('assunto', 'inst', 'professor', 'questoes', 'alternativas'));
-            //$new =  $pdf->setPaper('a4')->stream('avaliacao.pdf');
+         
 
 
             //passando valores para sessoes e para recuperá-los depois
@@ -74,8 +88,45 @@ class HomeController extends Controller
         }
 
         }catch(Exception $ex){
-            echo "Erro, tente novamente.";
+            return "Erro, tente novamente.";
         }
+
+
+        
+        }
+
+        return redirect('/');
+
+    }
+
+
+    public function rotaGerarGet(){
+
+
+            if(Auth::check() === true){
+                try{
+                    
+
+            return view('admin.painelOpcoes');
+
+                }catch(Exception $ex){
+                        return "Erro, tente novamente.";
+                }
+            }
+    }
+    
+
+
+    public function gerarAvaliacao(Request $request)
+    {
+           if ($request->isMethod('post')) { 
+
+               
+           return $this->rotaGerarPost($request);
+
+ }else if($request->isMethod('get')){
+    return $this->rotaGerarGet($request);
+ }
 
 
         
@@ -86,7 +137,8 @@ class HomeController extends Controller
     public function download_gabarito()
     {
 
-        $assunto = session()->get('assunto');
+        if(Auth::check() === true){
+$assunto = session()->get('assunto');
         $inst = session()->get('inst');
         $alternativas = session()->get('alternativas');
         $questoes = session()->get('questoes');
@@ -102,10 +154,17 @@ class HomeController extends Controller
         $pdf = PDF::loadView('gerador/gabarito', compact('assunto', 'inst', 'professor', 'questoes', 'alternativas', 'subjetivas'));
         $new =  $pdf->setPaper('a4')->download('gabarito.pdf');
         return $new;
+        }
+
+        return redirect('/');
+        
     }
 
     public function download_prova()
     {
+
+
+        if(Auth::check() === true){
 
         $assunto = session()->get('assunto');
         $inst = session()->get('inst');
@@ -122,5 +181,10 @@ class HomeController extends Controller
         $pdf = PDF::loadView('gerador/prova', compact('assunto', 'inst', 'professor', 'questoes', 'alternativas'));
         $new =  $pdf->setPaper('a4')->download('prova.pdf');
         return $new;
+
+        }
+
+        return redirect('/');
+
     }
 }
