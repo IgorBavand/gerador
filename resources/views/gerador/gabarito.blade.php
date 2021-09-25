@@ -10,6 +10,8 @@
     <style>
     body {
         background: white;
+        font-family: DejaVu Sans;
+
     }
 
     .cab-titulo {

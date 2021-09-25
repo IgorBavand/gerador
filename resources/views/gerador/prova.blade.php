@@ -8,70 +8,72 @@
 
 
     <style>
-        body {
-            background: white;
-        }
+    body {
+        background: white;
+        font-family: DejaVu Sans;
 
-        .cab-titulo {
-            color: black;
-            font-size: 30px;
-            padding: 25px;
-            display: flex;
+    }
 
-        }
+    .cab-titulo {
+        color: black;
+        font-size: 30px;
+        padding: 25px;
+        display: flex;
 
-        .nota {
-            float: right: width: 25%;
-        }
+    }
 
-        .place-nota {
-            width: 50%;
+    .nota {
+        float: right: width: 25%;
+    }
 
-
-        }
-
-        .cabecalho {
-            padding: 10px;
-            margin-top: 2%;
-
-        }
-
-        .questao {
-            padding: 10px;
-        }
-
-        .pagina {
-            width: 500px;
-        }
-
-        .border {
-            border-width: medium;
-            border-style: solid;
-        }
-
-        .esp-esq {
-            margin-left: 2%;
-        }
-
-        .letras-cab {
-            font-size: 20px;
-        }
-
-        .letras-quest {
-            font-size: 20px;
-        }
-
-        .inst {
-            font-size: 25px;
-            font-weight: italic;
+    .place-nota {
+        width: 50%;
 
 
-        }
+    }
 
-        .cont-tit {
-            text-align: center;
-            height: 5%;
-        }
+    .cabecalho {
+        padding: 10px;
+        margin-top: 2%;
+
+    }
+
+    .questao {
+        padding: 10px;
+    }
+
+    .pagina {
+        width: 500px;
+    }
+
+    .border {
+        border-width: medium;
+        border-style: solid;
+    }
+
+    .esp-esq {
+        margin-left: 2%;
+    }
+
+    .letras-cab {
+        font-size: 20px;
+    }
+
+    .letras-quest {
+        font-size: 20px;
+    }
+
+    .inst {
+        font-size: 25px;
+        font-weight: italic;
+
+
+    }
+
+    .cont-tit {
+        text-align: center;
+        height: 5%;
+    }
     </style>
 </head>
 
