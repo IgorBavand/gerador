@@ -62,7 +62,7 @@ class SysController extends Controller
     {
 
         $questoes = $this->objQuestao->create([
-            'id_user'=>1,
+            'id_user'=>Auth::user()->id,
             'assunto'=>$request->assunto,
             'texto'=>$request->texto,
              
