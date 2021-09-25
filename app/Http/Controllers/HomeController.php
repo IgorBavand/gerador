@@ -119,17 +119,11 @@ try{
 
     public function gerarAvaliacao(Request $request)
     {
-           if ($request->isMethod('post')) { 
-
-               
-           return $this->rotaGerarPost($request);
-
- }else if($request->isMethod('get')){
-    return $this->rotaGerarGet($request);
- }
-
-
-        
+           if ($request->isMethod('post')) {    
+            return $this->rotaGerarPost($request);
+            }else if($request->isMethod('get')){
+                return $this->rotaGerarGet($request);
+            }        
     }
 
     
