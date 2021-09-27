@@ -7,7 +7,7 @@
     <title>Document</title>
 
 
-    <style>
+     <style>
     body {
         background: white;
         font-family: DejaVu Sans;
@@ -16,8 +16,7 @@
 
     .cab-titulo {
         color: black;
-        font-size: 30px;
-        padding: 25px;
+        font-size: 14px;
         display: flex;
 
     }
@@ -28,18 +27,16 @@
 
     .place-nota {
         width: 50%;
-
-
     }
 
     .cabecalho {
-        padding: 10px;
-        margin-top: 2%;
+        padding: 0;
+        margin-top: -10px;
 
     }
 
     .questao {
-        padding: 10px;
+        padding: 0;
     }
 
     .pagina {
@@ -56,23 +53,40 @@
     }
 
     .letras-cab {
-        font-size: 20px;
+        font-size: 13px;
+        margin-top: 1px;
     }
 
     .letras-quest {
-        font-size: 20px;
+        font-size: 12px;
+        font-weight: bold;
+
+    }
+    .letras-alt {
+        font-size: 12px;
+        
+
     }
 
     .inst {
-        font-size: 25px;
+        font-size: 14px;
         font-weight: italic;
+        margin-top: -14px;
 
 
     }
 
     .cont-tit {
         text-align: center;
-        height: 5%;
+
+    }
+
+    .aluno {
+        margin-top: -10px;
+    }
+
+    .data {
+        margin-top: -10px;
     }
     </style>
 </head>
@@ -83,28 +97,22 @@
     use App\Models\ModelAlternativas;
     use App\Models\ModelSubjetiva;
 
+    
+
     @endphp
 
     <div class="cont-tit ">
-        <h2 class="cab-titulo">Avaliação de @php echo $assunto; @endphp </h2>
+        <h2 class="cab-titulo">Gabarito Avaliação de @php echo $assunto; @endphp - {{$codigo}} </h2>
     </div>
     <div class="cont-tit ">
         <h2 class="inst">@php echo $inst; @endphp </h2>
     </div>
 
 
-    <div class="border cabecalho">
+    <div class="cabecalho">
 
-        <div class="border">
             <h5 class="professor esp-esq letras-cab">Professor: @php echo $professor; @endphp</h5>
-            <h5 class="esp-esq letras-cab">Data:___/___/___ &nbsp;&nbsp;&nbsp;&nbsp; Nota:________</h5>
-        </div>
-
-        <div class="">
-            <h5 class="esp-esq letras-cab">Aluno:____________________________________________________________</h5>
-
-
-        </div>
+    
 
 
     </div>

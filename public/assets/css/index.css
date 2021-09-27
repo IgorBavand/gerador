@@ -60,6 +60,10 @@ input:checked[type="checkbox"]:before{
 	width: 30%;
 }
 
+.letra-home{
+	font-size: 30px;
+}
+
 @media (max-width: 750px)
 {
   .icone-home {

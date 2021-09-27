@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avaliação</title>
+    <title>Document</title>
 
 
     <style>
@@ -16,7 +16,8 @@
 
     .cab-titulo {
         color: black;
-        font-size: 14px;
+        font-size: 30px;
+        padding: 25px;
         display: flex;
 
     }
@@ -27,16 +28,18 @@
 
     .place-nota {
         width: 50%;
+
+
     }
 
     .cabecalho {
-        padding: 0;
-        margin-top: -10px;
+        padding: 10px;
+        margin-top: 2%;
 
     }
 
     .questao {
-        padding: 0;
+        padding: 10px;
     }
 
     .pagina {
@@ -53,40 +56,23 @@
     }
 
     .letras-cab {
-        font-size: 13px;
-        margin-top: 1px;
+        font-size: 20px;
     }
 
     .letras-quest {
-        font-size: 12px;
-        font-weight: bold;
-
-    }
-    .letras-alt {
-        font-size: 12px;
-        
-
+        font-size: 20px;
     }
 
     .inst {
-        font-size: 14px;
+        font-size: 25px;
         font-weight: italic;
-        margin-top: -14px;
 
 
     }
 
     .cont-tit {
         text-align: center;
-
-    }
-
-    .aluno {
-        margin-top: -10px;
-    }
-
-    .data {
-        margin-top: -10px;
+        height: 5%;
     }
     </style>
 </head>
@@ -95,34 +81,32 @@
     @php
     use App\Models\ModelQuestao;
     use App\Models\ModelAlternativas;
-    
-            
     @endphp
 
     <div class="cont-tit ">
-        <h2 class="cab-titulo">Avaliação de @php echo $assunto; @endphp - {{$codigo}} </h2>
-        
+        <h2 class="cab-titulo">Avaliação de @php echo $assunto; @endphp </h2>
     </div>
     <div class="cont-tit ">
         <h2 class="inst">@php echo $inst; @endphp </h2>
     </div>
 
 
-    <div class="cabecalho">
+    <div class="border cabecalho">
+
+        <div class="border">
+            <h5 class="professor esp-esq letras-cab">Professor: @php echo $professor; @endphp</h5>
+            <h5 class="esp-esq letras-cab">Data:___/___/___ &nbsp;&nbsp;&nbsp;&nbsp; Nota:________</h5>
+        </div>
+
+        <div class="">
+            <h5 class="esp-esq letras-cab">Aluno:____________________________________________________________</h5>
 
 
-        <h5 class="professor esp-esq letras-cab">Professor: @php echo $professor; @endphp</h5>
-        <h5 class="esp-esq aluno">
-            Aluno:____________________________________________________________&nbsp;&nbsp;&nbsp;&nbsp; Data:___/___/___&nbsp;&nbsp;&nbsp;&nbsp; </h5>
-
-
-
-
-
+        </div>
 
 
     </div>
-    <div class="ml-5 mt-5 esp-esq ">
+    <div class="ml-5 mt-5">
 
         @php
         $num_questao = 0;
@@ -136,9 +120,6 @@
         <p class="letras-quest">@php $num_questao++; echo $num_questao . " )"; @endphp {{$questao->texto}}</p>
         @php $veri_alt = 0; @endphp
         @foreach($select_de_alt as $sel)
-
-
-            
 
         @php
 
@@ -162,7 +143,7 @@
 
         @endphp
 
-        <p class="letras-alt"> @php echo "( ". $letra @endphp {{$sel->alternativa}}</p>
+        <p class="letras-quest"> @php echo $letra @endphp {{$sel->alternativa}}</p>
 
 
 

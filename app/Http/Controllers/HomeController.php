@@ -62,6 +62,14 @@ try{
             $qtd = $request->qtd_questoes;
             $inst = $request->instituicao;
 
+           $rand1 = rand(1000, 9999);
+            $rand2 = rand(0,9);
+
+
+            //gera um codigo para a prova
+            $codigo = $rand1.$rand2;
+
+
         if ($this->objQuestao->where('assunto', $assunto)->count() >= $qtd) {
             $questoes = $this->objQuestao->where('assunto', $assunto)->get()->random($qtd)->shuffle();
             
@@ -80,6 +88,7 @@ try{
             session()->put('professor', $professor);
             session()->put('inst', $inst);
             session()->put('subjetivas', $subjetivas);
+            session()->put('codigo', $codigo);
 
             return view('admin.painelOpcoes');
         } else {
@@ -119,11 +128,17 @@ try{
 
     public function gerarAvaliacao(Request $request)
     {
-           if ($request->isMethod('post')) {    
+        if(Auth::check() === true){
+             if ($request->isMethod('post')) {    
             return $this->rotaGerarPost($request);
             }else if($request->isMethod('get')){
                 return $this->rotaGerarGet($request);
-            }        
+            }  
+
+        }else{
+            return redirect('/');
+        }
+                
     }
 
     
@@ -132,12 +147,13 @@ try{
     {
 
         if(Auth::check() === true){
-$assunto = session()->get('assunto');
+        $assunto = session()->get('assunto');
         $inst = session()->get('inst');
         $alternativas = session()->get('alternativas');
         $questoes = session()->get('questoes');
         $professor = session()->get('professor');
         $subjetivas = session()->get('subjetivas');
+        $codigo = session()->get('codigo');
 
         /* session()->flush('assunto');
         session()->flush('inst');
@@ -145,7 +161,7 @@ $assunto = session()->get('assunto');
         session()->flush('alternativas');
         session()->flush('professor');
         */
-        $pdf = PDF::loadView('gerador/gabarito', compact('assunto', 'inst', 'professor', 'questoes', 'alternativas', 'subjetivas'));
+        $pdf = PDF::loadView('gerador/gabarito', compact('assunto', 'inst', 'professor', 'questoes', 'alternativas', 'subjetivas', 'codigo'));
         $new =  $pdf->setPaper('a4')->download('gabarito.pdf');
         return $new;
         }
@@ -165,6 +181,7 @@ $assunto = session()->get('assunto');
         $alternativas = session()->get('alternativas');
         $questoes = session()->get('questoes');
         $professor = session()->get('professor');
+        $codigo = session()->get('codigo');
 
         /* session()->flush('assunto');
         session()->flush('inst');
@@ -172,7 +189,7 @@ $assunto = session()->get('assunto');
         session()->flush('alternativas');
         session()->flush('professor');
         */
-        $pdf = PDF::loadView('gerador/prova', compact('assunto', 'inst', 'professor', 'questoes', 'alternativas'));
+        $pdf = PDF::loadView('gerador/prova', compact('assunto', 'inst', 'professor', 'questoes', 'alternativas', 'codigo'));
         $new =  $pdf->setPaper('a4')->download('prova.pdf');
         return $new;
 
