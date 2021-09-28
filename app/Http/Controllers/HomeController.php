@@ -37,6 +37,13 @@ class HomeController extends Controller
         $this->objSubjetiva = new ModelSubjetiva();
     }
 
+    public function formUpdate($id){
+        $nome = Auth::user()->name;
+        $email = Auth::user()->email;
+        return redirect('/register');
+
+    }
+
     public function formCadastroQuestao(){
 
         if(Auth::check() === true){

@@ -40,7 +40,7 @@ Route::match(['GET','POST'], '/gerar', 'HomeController@gerarAvaliacao');
 Route::get('/download_gabarito', 'HomeController@download_gabarito')->name('download_gabarito');
 Route::get('/download_prova', 'HomeController@download_prova')->name('download_prova');
 Route::get('formCadastrarQuestao', 'HomeController@formCadastroQuestao')->name('cadastrar_questao');
-
+Route::get('/editar/usuario/{id}', 'HomeController@formUpdate')->name('admin.editar.usuario');
 
 
 //Route::get('/', 'HomeController@index')->name('home');

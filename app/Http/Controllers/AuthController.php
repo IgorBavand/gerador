@@ -32,11 +32,20 @@ class AuthController extends Controller
         return view('admin.Formlogin');
     }
     public function login(Request $req){
-        //var_dump($req->all());
+                $remember = $req->has('remember')? true:false;
+
         $credenciais = [
             'email' => $req->email,
             'password' => $req->password,
+            
         ];
+
+        if(Auth::attempt($credenciais, $remember)){
+            $user = Auth::user();
+        }else{
+            Toastr::error('erro', 'Error');
+        }
+       // return $remember;
         if(Auth::attempt($credenciais)){
             return redirect()->route('admin');
         }else{

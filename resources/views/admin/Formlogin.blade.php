@@ -94,6 +94,8 @@
                                     {{ __('Entrar') }}
                                 </button>
 
+                                <a href="/register" style="color: white">Casdatre-se</a>
+
 
                             </div>
                         </div>
