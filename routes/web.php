@@ -41,6 +41,9 @@ Route::get('/download_gabarito', 'HomeController@download_gabarito')->name('down
 Route::get('/download_prova', 'HomeController@download_prova')->name('download_prova');
 Route::get('formCadastrarQuestao', 'HomeController@formCadastroQuestao')->name('cadastrar_questao');
 Route::get('/editar/usuario/{id}', 'HomeController@formUpdate')->name('admin.editar.usuario');
+Route::get('visualizar/minhas/questoes/{id}', 'HomeController@minhas_questoes')->name('minhas_questos');
+Route::get('visualizar/minhas/questoes/{id}/{id_q}', 'HomeController@visualizar_questao')->name('visualizar_questao');
 
-
+Route::put('edit-sub/{id_quest}/{id_sub}', 'HomeController@edit_sub')->name('edit_sub');
+Route::put('edit-alt/{id_quest}/{id1}/{id2}/{id3}/{id4}', 'HomeController@edit_alt')->name('edit_alt');
 //Route::get('/', 'HomeController@index')->name('home');

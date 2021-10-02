@@ -37,6 +37,10 @@ class HomeController extends Controller
         $this->objSubjetiva = new ModelSubjetiva();
     }
 
+
+
+    //falta implementar
+
     public function formUpdate($id){
         $nome = Auth::user()->name;
         $email = Auth::user()->email;
@@ -51,7 +55,7 @@ class HomeController extends Controller
             return view('admin.formCadastroQuestao', compact('assunto'));
         }
 
-        return redirect('/');
+        return redirect()->back()->with('error', 'Você presica estar conectado!');
 
         
     }
@@ -111,7 +115,7 @@ try{
         
         }
 
-        return redirect('/');
+        return redirect()->back()->with('error', 'Você presica estar conectado!');
 
     }
 
@@ -143,7 +147,7 @@ try{
             }  
 
         }else{
-            return redirect('/');
+        return redirect()->back()->with('error', 'Você presica estar conectado!');
         }
                 
     }
@@ -173,7 +177,55 @@ try{
         return $new;
         }
 
-        return redirect('/');
+        return redirect()->back()->with('error', 'Você presica estar conectado!');
+        
+    }
+
+
+    public function minhas_questoes($id){
+        if(Auth::check() === true){
+            if(Auth::user()->id == $id){
+                $minhas_questoes = ModelQuestao::where('id_user', $id)->get();
+            return view('admin.minhasQuestoes', compact('minhas_questoes'));
+
+            }else{
+                return redirect()->back()->with('error', 'Você só tem acesso as suas questões!');
+
+            }
+             
+        }else{
+            return redirect()->back()->with('error', 'Você presica estar conectado!');
+
+        }
+       
+    }
+
+    public function visualizar_questao($id_usuario, $id_questao){
+
+        if(Auth::check() === true){
+
+           $questao = ModelQuestao::find($id_questao);
+           $assunto = ModelAssunto::all();
+
+           if(isset($questao)){
+
+            if($questao->id_user == $id_usuario){
+                return view('admin.formCadastroQuestao', compact('assunto', 'questao'));
+            }else{
+                return 'aqui fora';
+            }
+
+           }else{
+                return redirect()->route("localhost:8000")->with('error', 'Você presica estar conectado!');
+
+
+           }
+
+
+        }else{
+            return redirect()->back()->with('error', 'Você presica estar conectado!');
+
+        }
         
     }
 
@@ -202,7 +254,96 @@ try{
 
         }
 
-        return redirect('/');
+        return redirect()->back()->with('error', 'Você presica estar conectado!');
 
     }
+
+
+    public function edit_sub(Request $request, $id_quest, $id_sub){
+        $this->objQuestao->where(['id'=>$id_quest])->update([
+             'id_user'=>Auth::user()->id,
+            'assunto'=>$request->assunto,
+            'texto'=>$request->texto,
+        ]);
+
+        $this->objSubjetiva->where('id', $id_sub)->update([
+               
+                'resposta' => $request->subjetiva
+            ]);
+
+
+            return redirect('/')->with('message', 'A questão foi alterada com sucesso!');
+
+        
+        
+    }
+
+
+    public function edit_alt(Request $request, $id_quest, $id1, $id2, $id3, $id4){
+
+$this->objQuestao->where(['id'=>$id_quest])->update([
+             'id_user'=>Auth::user()->id,
+            'assunto'=>$request->assunto,
+            'texto'=>$request->texto,
+        ]);
+
+
+        if((isset($request->alt1)) && (isset($request->alt2)) && (isset($request->alt3)) && (isset($request->alt4))){
+            if($request->check == '1'){
+                $ck1 = 'c';
+            }else{
+             $ck1 = 'e';
+            } 
+     
+            if($request->check == '2'){
+                 $ck2 = 'c';
+             }else{
+                 $ck2 = 'e';
+             }  
+             if($request->check == '3'){
+                 $ck3 = 'c';
+             }else{
+              $ck3 = 'e';
+             }  
+             if($request->check == '4'){
+                 $ck4 = 'c';
+             }else{
+              $ck4 = 'e';
+             }  
+             
+             $this->objAlternativas->where(['id'=>$id1])->update([
+                 
+                 'alternativa'=>$request->alt1,
+                 'check'=>$ck1,
+                  
+             ]);
+     
+             $this->objAlternativas->where(['id'=>$id2])->update([
+                 
+                 'alternativa'=>$request->alt2,
+                 'check'=>$ck2,
+                  
+             ]);
+     
+             $this->objAlternativas->where(['id'=>$id3])->update([
+                 
+                 'alternativa'=>$request->alt3,
+                 'check'=>$ck3,
+                  
+             ]);
+     
+             $this->objAlternativas->where(['id'=>$id4])->update([
+                 
+                 'alternativa'=>$request->alt4,
+                 'check'=>$ck4,
+                  
+             ]);
+            }
+        
+                        return redirect('/')->with('message', 'A questão foi alterada com sucesso!');
+
+
+    }
+
 }
+

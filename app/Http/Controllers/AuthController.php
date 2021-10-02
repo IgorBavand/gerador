@@ -42,10 +42,7 @@ class AuthController extends Controller
 
         if(Auth::attempt($credenciais, $remember)){
             $user = Auth::user();
-        }else{
-            Toastr::error('erro', 'Error');
         }
-       // return $remember;
         if(Auth::attempt($credenciais)){
             return redirect()->route('admin');
         }else{

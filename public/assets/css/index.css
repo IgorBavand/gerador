@@ -12,6 +12,14 @@
 
 }
 
+.botoes{
+	background-color: #6A5ACD;
+}
+
+.botoes:hover{
+	background-color: #000080;
+}
+
 
 
 

@@ -4,6 +4,44 @@
 
 <section class="hero-section" style="mt-0">
 
+<script>
+  @if(Session::has('message'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.success("{{ session('message') }}");
+  @endif
+
+  @if(Session::has('error'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.error("{{ session('error') }}");
+  @endif
+
+  @if(Session::has('info'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.info("{{ session('info') }}");
+  @endif
+
+  @if(Session::has('warning'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.warning("{{ session('warning') }}");
+  @endif
+</script>
+
 
 
 
@@ -26,11 +64,15 @@
             </div>
         </div>
 
-        <a data-target="#gerar_prova" data-toggle="modal" class="btn btn-primary">Gerar Avaliação</a>
-        <a href="formCadastrarQuestao" class="btn btn-primary">Cadastrar Questões</a>
-        <!--
-                <a class="btn btn-warning" style="color: black;">Minhas Questões</a>
-                -->
+        <a data-target="#gerar_prova" data-toggle="modal" class="btn botoes mt-2">Gerar Avaliação</a>
+        <a href="formCadastrarQuestao" class="btn botoes mt-2">Cadastrar Questões</a>
+        
+        <div class="row justify-content-center align-items-center mt-2">
+                    <a class="btn botoes" href="visualizar/minhas/questoes/{{Auth::user()->id}}">Minhas Questões</a>
+
+
+        </div>
+                
     </div>
 
 </section>

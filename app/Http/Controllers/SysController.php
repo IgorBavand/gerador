@@ -129,7 +129,7 @@ class SysController extends Controller
 
         
       
-        return redirect('/');
+        return redirect('/')->with('message', 'Questão cadastrada.');
 
     }
         
