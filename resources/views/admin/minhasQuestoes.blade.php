@@ -56,11 +56,12 @@ p{
 }
 </style>
 
-<div class="row justify-content-center div-titulo">
-        <h4 class="text-light">Questões de {{ Auth::user()->name }}</h4>
-    </div>
 
 <div class="container">
+
+<div class="row d-flex justify-content-center div-titulo">
+        <h4 class="text-light">Questões de {{ Auth::user()->name }}</h4>
+    </div>
     
 
     @foreach($minhas_questoes as $res)

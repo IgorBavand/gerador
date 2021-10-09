@@ -115,10 +115,52 @@ a{
 					 </div>
 				</div>	 
 				
-					 
+					 <style>
+                         .imagem{
+                             width: 40%;
+                             height: auto;
+                             
+                         }
+                         .imagem-qr{
+                             width: 50%;
+                             height: auto;
+                             
+                         }
+
+                     </style>
 				
 				
 				</div>	 
+                <div class="row d-flex justify-content-center" style="background-color: white">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+               
+					<div class="box-part text-center">
+                        <div class="row">
+                            <h4 class="text-primary ">DESENVOLVEDOR DO GERPRO</h4>
+
+                        </div>
+                        
+                        <img src="{{url('assets/img/igor.jpeg')}}" class="rounded float-end imagem mt-2" alt="">
+                        
+						<div class="title">
+							<h6 class="text-primary mt-2">IGOR</h6>
+						</div>
+                        
+						<div class="text">
+							<span class="text-primary">FACA UM PIX PARA AJUDAR <i class="bi bi-emoji-laughing"></i></span>
+
+                        </div>
+
+                        <div class="text">
+                         	<span class="text-primary">CHAVE E E-MAIL DE CONTATO: igor.bvn@gmail.com</span>
+
+                        </div>
+                        
+                         <img src="{{url('assets/img/qrcode.jpeg')}}" class="imagem-qr" alt="">
+					 </div>
+				</div>	
+                    
+                </div>
 				</div>
   </div>
      	

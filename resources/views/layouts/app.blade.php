@@ -16,6 +16,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{url('assets/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{url('assets/css/font-awesome.min.css')}}" />
     <link rel="stylesheet" href="{{url('assets/css/index.css')}}" />
@@ -58,7 +59,7 @@
         <nav class="navbar navbar-expand-md navbar-dark color-nav shadow-sm">
             <div class="container ">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Gerador de avaliações
+                  <i class="bi bi-house-door"></i>  Gerador de avaliações <i class="bi bi-house-door"></i>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -95,12 +96,12 @@
 
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/editar/usuario/{{Auth::user()->id}}">Editar Perfil</a>
+                                <a class="dropdown-item" href="/editar/usuario/{{Auth::user()->id}}">Editar Perfil <i class="bi bi-pencil-square"></i></a>
 
 
                                 <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Sair') }}
+                                    {{ __('Sair') }} <i class="bi bi-box-arrow-right"></i>
                                 </a>
 
                                 <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"

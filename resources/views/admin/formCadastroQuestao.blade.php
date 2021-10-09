@@ -14,7 +14,7 @@
 
 
     <div class="center">
-        <label for="checkbox_questao" class="">Alterne para questão subjetiva</label>
+        <label for="checkbox_questao" class="mt-5">Alterne para questão subjetiva</label>
         <input class="mt-25" type="checkbox" name="checkbox_questao" id="checkbox_questao">
     </div>
 
@@ -31,8 +31,15 @@
 
                 
                 $alt1 = ModelAlternativas::where('id_questao', $questao->id)->first();
-               if(isset($alt1)){
+               
+
+                if(isset($alt1)){
+
+                $certa = '';
+
+                
                 $id2 = ($alt1->id)+1;
+
                 
                 $alt2 = ModelAlternativas::find($id2);
                 $id3 = ($alt2->id)+1;
@@ -41,6 +48,14 @@
                 $id4 = ($alt3->id)+1;
 
                 $alt4 = ModelAlternativas::find($id4);
+
+                if($alt1->check == 'c') $certa = '1';
+                if($alt2->check == 'c') $certa = '2';
+                if($alt3->check == 'c') $certa = '3';
+                if($alt4->check == 'c') $certa = '4';
+
+
+                
 
                 }
                 
@@ -71,8 +86,9 @@
         <div class="form-group">
             <label for="ass">Selecione o assunto da questao:</label>
             <select class="form-control" id="ass" name="assunto">
+                <option>{{$questao->assunto ?? ''}}</option>
                 @foreach($assunto as $assuntos)
-                <option>{{$questao->assunto ?? $assuntos->assunto}}</option>
+                <option>{{$assuntos->assunto}}</option>
                 @endforeach
 
             </select>
@@ -82,7 +98,7 @@
         <div id="div-subjetiva">
             <div class="form-group">
                 <label for="sujetiva" class="col-form-label">Resposta:</label>
-                <textarea type="text" class="form-control" id="subjetiva"  name="subjetiva">{{ $subjetiva->resposta ?? ' ' }}"</textarea>
+                <textarea type="text" class="form-control" id="subjetiva"  name="subjetiva">{{ $subjetiva->resposta ?? ' ' }}</textarea>
             </div>
 
         </div>
@@ -120,7 +136,9 @@
             <!-- CHECKBOX PARA MARCAR ALTERNATIVA CORRETA -->
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Selecione a alternativa correta:</label>
+                
                 <select class="form-control" id="exampleFormControlSelect1" name="check">
+                    <option selected>{{ $certa ?? '' }}</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -135,7 +153,11 @@
         <div class="modal-footer">
             <button onclick="window.location.href='/'" type="button" href="/" class="btn btn-danger">Cancelar</button>
 
+            @if(isset($questao))
+            <input type="submit" class="btn btn-success" value="Editar">
+            @else 
             <input type="submit" class="btn btn-success" value="Cadastrar">
+            @endif
 
         </div>
     </form>
